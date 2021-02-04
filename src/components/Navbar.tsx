@@ -4,7 +4,7 @@ import styled from "styled-components";
 import "./navbar.css";
 
 const Nav = styled.nav`
-  height: 80px;
+  height: 10vh;
   position: sticky;
   display: flex;
   justify-content: center;
@@ -65,7 +65,7 @@ const NavWrap = styled.ul<{ click: boolean }>`
     top: 80px;
     align-items: center;
     width: 100%;
-    height: 90vh;
+    height: 100%;
     opacity: 1;
 
     background: ${({ click }) => (click ? "#242424" : "")};
@@ -74,7 +74,11 @@ const NavWrap = styled.ul<{ click: boolean }>`
   }
 `;
 const NavItems = styled.li`
+  //親要素gridで子要素flexの中央揃え！
   height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 const NavLinks = styled(Link)`
   color: #fff;
