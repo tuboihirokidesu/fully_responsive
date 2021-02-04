@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Button from "./Button";
 
 const HeroContainer = styled.div`
-  height: 90vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,11 +22,11 @@ const Video = styled.video`
 const HeroHeader = styled.h1`
   color: #fff;
   font-size: 100px;
-  margin-top: 100px;
+  margin-top: 200px;
 
   @media screen and (max-width: 960px) {
     font-size: 70px;
-    margin-top: 150px;
+    margin-top: 250px;
   }
 `;
 const HeroParagraph = styled.p`

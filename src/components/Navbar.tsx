@@ -4,12 +4,13 @@ import styled from "styled-components";
 import "./navbar.css";
 
 const Nav = styled.nav`
-  height: 10vh;
-  position: sticky;
+  height: 12vh;
+  position: fixed;
+  width: 100%;
   display: flex;
+  z-index: 10;
   justify-content: center;
   align-items: center;
-
   background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
 `;
 const NavContainer = styled.div`
@@ -52,6 +53,7 @@ const NavWrap = styled.ul<{ click: boolean }>`
   grid-template-columns: repeat(4, auto);
   grid-gap: 10px;
   list-style: none;
+  z-index: 10;
   text-align: center;
   width: 60vw;
   justify-content: end;
@@ -64,8 +66,8 @@ const NavWrap = styled.ul<{ click: boolean }>`
     transition: all 0.5s ease;
     top: 80px;
     align-items: center;
+    height: 100vh;
     width: 100%;
-    height: 100%;
     opacity: 1;
 
     background: ${({ click }) => (click ? "#242424" : "")};
@@ -75,7 +77,6 @@ const NavWrap = styled.ul<{ click: boolean }>`
 `;
 const NavItems = styled.li`
   //親要素gridで子要素flexの中央揃え！
-  height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
