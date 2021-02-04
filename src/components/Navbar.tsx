@@ -7,6 +7,7 @@ import "./navbar.css";
 const Navbar = () => {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
+  const [scroll, setScroll] = useState(false);
 
   const handleClick = () => setClick(!click);
 
@@ -19,16 +20,24 @@ const Navbar = () => {
       setButton(true);
     }
   };
+  const changeBackground = () => {
+    if (window.scrollY >= 80) {
+      setScroll(true);
+    } else {
+      setScroll(false);
+    }
+  };
 
   window.addEventListener("resize", showButton);
   //resize・・・サイズ変更
+  window.addEventListener("scroll", changeBackground);
 
   useEffect(() => {
     showButton();
   }, []);
   return (
     <>
-      <Nav>
+      <Nav scroll={scroll}>
         <NavContainer>
           <Logo to='/'>
             TRVL
@@ -68,7 +77,7 @@ const Navbar = () => {
 
 export default Navbar;
 
-const Nav = styled.nav`
+const Nav = styled.nav<{ scroll: boolean }>`
   height: 12vh;
   position: fixed;
   width: 100%;
@@ -76,7 +85,7 @@ const Nav = styled.nav`
   z-index: 10;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
+  background: ${({ scroll }) => (scroll ? "#242424" : "transparent")};
 `;
 const NavContainer = styled.div`
   display: flex;
@@ -135,7 +144,6 @@ const NavWrap = styled.ul<{ click: boolean }>`
     width: 100%;
     opacity: 1;
 
-    background: ${({ click }) => (click ? "#242424" : "")};
     opacity: ${({ click }) => (click ? 1 : 0)};
     left: ${({ click }) => (click ? "0" : "-100%")};
   }
