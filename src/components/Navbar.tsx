@@ -1,7 +1,72 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import Button from "./Button";
 import "./navbar.css";
+
+const Navbar = () => {
+  const [click, setClick] = useState(false);
+  const [button, setButton] = useState(true);
+
+  const handleClick = () => setClick(!click);
+
+  const closeMobileMenu = () => setClick(false);
+
+  const showButton = () => {
+    if (window.innerWidth <= 960) {
+      setButton(false);
+    } else {
+      setButton(true);
+    }
+  };
+
+  window.addEventListener("resize", showButton);
+  //resize・・・サイズ変更
+
+  useEffect(() => {
+    showButton();
+  }, []);
+  return (
+    <>
+      <Nav>
+        <NavContainer>
+          <Logo to='/'>
+            TRVL
+            <i className='fab fa-typo3' />
+          </Logo>
+          <MenuIcon onClick={handleClick}>
+            <i className={click ? "fas fa-times" : "fas fa-bars"} />
+          </MenuIcon>
+          <NavWrap click={click}>
+            <NavItems>
+              <NavLinks to='/' onClick={closeMobileMenu}>
+                Home
+              </NavLinks>
+            </NavItems>
+            <NavItems>
+              <NavLinks to='/service' onClick={closeMobileMenu}>
+                Service
+              </NavLinks>
+            </NavItems>
+            <NavItems>
+              <NavLinks to='/products' onClick={closeMobileMenu}>
+                Products
+              </NavLinks>
+            </NavItems>
+            <NavItems>
+              <NavLinksMobile to='/sign-up' onClick={closeMobileMenu}>
+                Sign Up
+              </NavLinksMobile>
+            </NavItems>
+          </NavWrap>
+          {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}
+        </NavContainer>
+      </Nav>
+    </>
+  );
+};
+
+export default Navbar;
 
 const Nav = styled.nav`
   height: 12vh;
@@ -127,50 +192,3 @@ const NavLinksMobile = styled(Link)`
     }
   }
 `;
-
-const Navbar = () => {
-  const [click, setClick] = useState(false);
-
-  const handleClick = () => setClick(!click);
-
-  const closeMobileMenu = () => setClick(false);
-  return (
-    <>
-      <Nav>
-        <NavContainer>
-          <Logo to='/'>
-            TRVL
-            <i className='fab fa-typo3' />
-          </Logo>
-          <MenuIcon onClick={handleClick}>
-            <i className={click ? "fas fa-times" : "fas fa-bars"} />
-          </MenuIcon>
-          <NavWrap click={click}>
-            <NavItems>
-              <NavLinks to='/' onClick={closeMobileMenu}>
-                Home
-              </NavLinks>
-            </NavItems>
-            <NavItems>
-              <NavLinks to='/service' onClick={closeMobileMenu}>
-                Service
-              </NavLinks>
-            </NavItems>
-            <NavItems>
-              <NavLinks to='/products' onClick={closeMobileMenu}>
-                Products
-              </NavLinks>
-            </NavItems>
-            <NavItems>
-              <NavLinksMobile to='/sign-up' onClick={closeMobileMenu}>
-                Sign Up
-              </NavLinksMobile>
-            </NavItems>
-          </NavWrap>
-        </NavContainer>
-      </Nav>
-    </>
-  );
-};
-
-export default Navbar;

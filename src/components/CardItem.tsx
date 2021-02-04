@@ -1,6 +1,30 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+type Props = {
+  src: string;
+  text: string;
+  label: string;
+  path: string;
+};
+
+const CardItem: React.FC<Props> = ({ src, text, label, path }) => {
+  return (
+    <CardsItem>
+      <CardsItemLink to={path}>
+        <CardsPicWrap data-category={label}>
+          <CardsImage src={src} />
+        </CardsPicWrap>
+        <CardsItemInfo>
+          <CardsItemText>{text}</CardsItemText>
+        </CardsItemInfo>
+      </CardsItemLink>
+    </CardsItem>
+  );
+};
+
+export default CardItem;
+
 const CardsItem = styled.li`
   display: flex;
   flex: 1;
@@ -68,27 +92,3 @@ const CardsItemText = styled.h5`
   font-size: 18px;
   line-height: 24px;
 `;
-
-type Props = {
-  src: string;
-  text: string;
-  label: string;
-  path: string;
-};
-
-const CardItem: React.FC<Props> = ({ src, text, label, path }) => {
-  return (
-    <CardsItem>
-      <CardsItemLink to={path}>
-        <CardsPicWrap data-category={label}>
-          <CardsImage src={src} />
-        </CardsPicWrap>
-        <CardsItemInfo>
-          <CardsItemText>{text}</CardsItemText>
-        </CardsItemInfo>
-      </CardsItemLink>
-    </CardsItem>
-  );
-};
-
-export default CardItem;

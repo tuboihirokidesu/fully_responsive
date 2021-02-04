@@ -1,33 +1,6 @@
 import styled from "styled-components";
 import CardItem from "./CardItem";
 
-const Cards = styled.div`
-  padding: 4rem;
-  background: #fff;
-`;
-const CardsHeader = styled.h1`
-  text-align: center;
-`;
-const CardsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 1120px;
-  width: 90%;
-  margin: 0 auto;
-`;
-const CardsWrap = styled.div`
-  position: relative;
-  margin: 50px 0 45px;
-`;
-const CardsItems = styled.ul`
-  margin-bottom: 24px;
-
-  @media only screen and (max-width: 1024px) {
-    display: flex;
-  }
-`;
-
 const Card = () => {
   return (
     <Cards>
@@ -75,3 +48,30 @@ const Card = () => {
 };
 
 export default Card;
+
+const Cards = styled.div`
+  padding: 4rem;
+  background: #fff;
+`;
+const CardsHeader = styled.h1`
+  text-align: center;
+`;
+const CardsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1120px;
+  width: 90%;
+  margin: 0 auto;
+`;
+const CardsWrap = styled.div`
+  position: relative;
+  margin: 50px 0 45px;
+`;
+const CardsItems = styled.ul`
+  margin-bottom: 24px;
+
+  @media only screen and (max-width: 1024px) {
+    display: flex;
+  }
+`;

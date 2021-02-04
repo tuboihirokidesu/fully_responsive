@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+const Services = () => {
+  return <ServicesContainer>Services</ServicesContainer>;
+};
+
+export default Services;
+
 const ServicesContainer = styled.h1`
   background-image: url("/images/img-2.jpg");
   background-position: center;
@@ -11,9 +17,3 @@ const ServicesContainer = styled.h1`
   text-align: center;
   padding-top: 300px;
 `;
-
-const Services = () => {
-  return <ServicesContainer>Services</ServicesContainer>;
-};
-
-export default Services;

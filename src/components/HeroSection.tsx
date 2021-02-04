@@ -1,6 +1,30 @@
 import styled from "styled-components";
 import Button from "./Button";
 
+const HeroSection = () => {
+  return (
+    <HeroContainer>
+      <Video src='videos/video-1.mp4' autoPlay loop muted />
+      <HeroHeader>ADVENTURE AWAITS</HeroHeader>
+      <HeroParagraph>What are you waiting for?</HeroParagraph>
+      <HeroBtnWrap>
+        <Button buttonStyle='btn--outline' buttonSize='btn--large'>
+          GET STARTED
+        </Button>
+        <Button
+          buttonStyle='btn--primary'
+          buttonSize='btn--large'
+          onClick={() => console.log("hey")}
+        >
+          WATCH TRAILER <i className='far fa-play-circle' />
+        </Button>{" "}
+      </HeroBtnWrap>
+    </HeroContainer>
+  );
+};
+
+export default HeroSection;
+
 const HeroContainer = styled.div`
   height: 100vh;
   display: flex;
@@ -43,27 +67,3 @@ const HeroParagraph = styled.p`
 const HeroBtnWrap = styled.div`
   margin-top: 32px;
 `;
-
-const HeroSection = () => {
-  return (
-    <HeroContainer>
-      <Video src='videos/video-2.mp4' autoPlay loop muted />
-      <HeroHeader>ADVENTURE AWAITS</HeroHeader>
-      <HeroParagraph>What are you waiting for?</HeroParagraph>
-      <HeroBtnWrap>
-        <Button buttonStyle='btn--outline' buttonSize='btn--large'>
-          GET STARTED
-        </Button>
-        <Button
-          buttonStyle='btn--primary'
-          buttonSize='btn--large'
-          onClick={() => console.log("hey")}
-        >
-          WATCH TRAILER <i className='far fa-play-circle' />
-        </Button>{" "}
-      </HeroBtnWrap>
-    </HeroContainer>
-  );
-};
-
-export default HeroSection;
