@@ -37,7 +37,7 @@ const Navbar = () => {
   }, []);
   return (
     <>
-      <Nav scroll={scroll}>
+      <Nav scroll={scroll} click={click}>
         <NavContainer>
           <Logo to='/'>
             TRVL
@@ -77,7 +77,7 @@ const Navbar = () => {
 
 export default Navbar;
 
-const Nav = styled.nav<{ scroll: boolean }>`
+const Nav = styled.nav<{ scroll: boolean; click: boolean }>`
   height: 12vh;
   position: fixed;
   width: 100%;
@@ -86,6 +86,11 @@ const Nav = styled.nav<{ scroll: boolean }>`
   justify-content: center;
   align-items: center;
   background: ${({ scroll }) => (scroll ? "#242424" : "transparent")};
+
+  @media screen and (max-width: 960px) {
+    background: ${({ scroll }) => (scroll ? "#242424" : "transparent")};
+    background: ${({ click }) => (click ? "#242424" : "transparent")};
+  }
 `;
 const NavContainer = styled.div`
   display: flex;
@@ -143,7 +148,7 @@ const NavWrap = styled.ul<{ click: boolean }>`
     height: 100vh;
     width: 100%;
     opacity: 1;
-
+    background: ${({ click }) => (click ? "#242424" : "")};
     opacity: ${({ click }) => (click ? 1 : 0)};
     left: ${({ click }) => (click ? "0" : "-100%")};
   }
